@@ -27,7 +27,7 @@ php ./h-php/hPackage.php -c ./config.php
 php ./h-php/hPackage.php -c ./h-php/hPhp.config.php // 默认情况下
 php ./h-php/hPackage.php -c ./verdor/hunzsig/h-php/hPhp.config.php // 默认composer情况下
 ```
-#####composer下：
+##### composer下：
 ```php
 php ./verdor/hunzsig/h-php/hPackage.php -c ./config.php
 ```
