@@ -18,16 +18,18 @@
 ?>
 ```
 
-
 ### 打包
 #### 打包会在h-php目录下生成一个dist目录，加密混淆并压缩优化
+##### 打包需要-c参数来定义你的config文件
 ##### 根目录情况下：
 ```php
-php ./h-php/hPackage.php
+php ./h-php/hPackage.php -c ./config.php
+php ./h-php/hPackage.php -c ./h-php/hPhp.config.php // 默认情况下
+php ./h-php/hPackage.php -c ./verdor/hunzsig/h-php/hPhp.config.php // 默认composer情况下
 ```
 #####composer下：
 ```php
-php ./verdor/hunzsig/h-php/hPackage.php
+php ./verdor/hunzsig/h-php/hPackage.php -c ./config.php
 ```
 
 ### 测试接口地址

@@ -1,4 +1,7 @@
 ##更新日志 <a href="https://github.com/hunzsig/h-php" target="_blank">GitHub</a>
+###2019/03/30
+    优化了打包，增加了-c参数指定config路径
+    现在打包的dist目录会生成在config中设定的path_root处
 ###2019/03/23
     补回了config自定义的方式
     你可以在根目录构建一个config.php
