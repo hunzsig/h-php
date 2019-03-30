@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+body *{
+    font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-variant: tabular-nums;
+}
+.wxPayBox{
+    width: 96%;
+    margin: 0;
+    padding: 0 2%;
+}
+.wxPayBox *{
+    font-size: 0.16rem;
+}
+.wxPayBox .top{
+    position: fixed;
+    top: 0;left: 0;right: 0;
+    width: 100%;
+    padding: 0 2%;
+    height: 0.60rem;
+    background: #fff;
+}
+.wxPayBox .top img{
+    margin: 0.14rem 0 0 0.1rem;
+    height: 0.32rem;
+}
+
+.wxPayBox .middle{
+    position: fixed;
+    top: 0.60rem;left: 0;right: 0;bottom: 0.60rem;
+    padding: 0.1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling:touch;
+}
+.wxPayBox .middle .amount{
+    width: 100%;
+    position: absolute;
+    margin: 0.1rem 0;
+    bottom: 0;right: 2%;
+    text-align: right;
+    font-size: 0.18rem;
+}
+.wxPayBox .middle .amount .money{
+    font-size: 0.26rem;
+    color: #ec3d39;
+}
+.wxPayBox .middle .description{
+    width: 100%;
+}
+.wxPayBox .middle .description td{
+    padding: 0.05rem 0;
+    color: #444444;
+    font-size: 0.18rem;
+}
+.wxPayBox .middle .description td:nth-child(odd){
+    color: #666666;
+}
+
+.wxPayBox .bottom{
+    position: fixed;
+	z-index: 99999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0.60rem;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+.wxPayBox .bottom button{
+    width: 100%;
+    line-height: 0.60rem;
+    border: 0;
+    font-size: 0.20rem;
+}
+.wxPayBox .bottom button:active{
+    font-size: 0.18rem;
+}
+
+.wxPayBox.t1 .top{
+    border-bottom: 0.02rem solid #00C800;
+}
+.wxPayBox.t1 .bottom button{
+    background: #00C800;
+    color: #fff;
+}
+.wxPayBox.t1 .bottom button:active{
+    background: #00a000;
+}
+.wxPayBox.t2 .top{
+    border-bottom: 0.02rem solid #e6b23c;
+}
+.wxPayBox.t2 .bottom button{
+    background: #e6b23c;
+    color: #fff;
+}
+.wxPayBox.t2 .bottom button:active{
+    background: #b68d2f;
+}

@@ -1,0 +1,8 @@
+{
+    "name": "hunzsig/h-php",
+    "description": "A http/websocket PHP framework(swoole)",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2"
+    }
+}
