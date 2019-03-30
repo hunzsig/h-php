@@ -1,18 +1,26 @@
 <?php
-require 'hPhp.php';
 require 'hColor.php';
+$Color = (new hColor());
+
+$params = getopt('c:');
+$isTerminal = (empty($_COOKIE)) ? true : false;
+if (!$isTerminal) echo '<pre>';
+if (!isset($params['c'])) {
+    show('中断：你没有使用-c配置config文件路径，可能会造成配置错误', 'red');
+    exit();
+}
+define('CONFIG_PATH', $params['c']);
+
+require 'hPhp.php';
 
 G('1');
 $now = md5(time());
-$Color = (new hColor());
-$root = realpath(__DIR__ . '/..');
-$isTerminal = (empty($_COOKIE)) ? true : false;
+$root = PATH_ROOT;
 $package_key = CONFIG['package_key'];
 $package_iv = CONFIG['package_iv'];
 $cext = '.dll';
 
 /* TODO */
-if (!$isTerminal) echo '<pre>';
 show('Package start', 'yellow');
 show('Root:' . $root);
 show('Package Key:' . $package_key);
@@ -218,7 +226,7 @@ function combinePhp($dir, $data = '')
 function show($str, $color = null)
 {
     global $isTerminal, $Color;
-    $str = PHP_EOL . ' -> ' . $str;
+    $str = ' -> ' . $str . PHP_EOL;
     switch ($color) {
         case 'red':
             echo (!$isTerminal) ? "<b style='color: red'>{$str}</b>" : $Color::lightRed($str);
