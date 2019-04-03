@@ -906,6 +906,7 @@ class Mysql extends DataBase
                         $innerSql .= $this->parseKey($table) . '.';
                         $innerSql .= $field;
                     }
+                    $isContinue = false;
                     switch ($v['operat']) {
                         case self::equalTo:
                             $value = $this->parseWhereByFieldType($v['value'], $ft_type);
@@ -1025,7 +1026,7 @@ class Mysql extends DataBase
                                 }
                                 $innerSql .= ")";
                             } else {
-                                continue;
+                                $isContinue = true;
                             }
                             break;
                         case self::notContains:
@@ -1044,7 +1045,7 @@ class Mysql extends DataBase
                                 }
                                 $innerSql .= ")";
                             } else {
-                                continue;
+                                $isContinue = true;
                             }
                             break;
                         case self::containsAnd: // rename find_in_set
@@ -1063,7 +1064,7 @@ class Mysql extends DataBase
                                 }
                                 $innerSql .= ")";
                             } else {
-                                continue;
+                                $isContinue = true;
                             }
                             break;
                         case self::notContainsAnd:
@@ -1082,12 +1083,14 @@ class Mysql extends DataBase
                                 }
                                 $innerSql .= ")";
                             } else {
-                                continue;
+                                $isContinue = true;
                             }
                             break;
                         default:
-                            continue;
+                            $isContinue = true;
+                            break;
                     }
+                    if ($isContinue) continue;
                     $sql .= $sql ? " {$cond}{$innerSql} " : $innerSql;
                 }
             }
@@ -1836,7 +1839,6 @@ class Mysql extends DataBase
                         $this->any($matchField, explode(',', $matchValue));
                         break;
                     default:
-                        continue;
                         break;
                 }
             }
@@ -2314,7 +2316,7 @@ class Mysql extends DataBase
                         //todo 跟据表字段处理数据
                         if (is_array($val) && strpos($ft[$table . '_' . $key], 'char') !== false) { // 字符串型数组
                             $val = $this->toMyArray($val, $ft[$table . '_' . $key]);
-                            if($val === null) $value[] = 'NULL';
+                            if ($val === null) $value[] = 'NULL';
                         } else {
                             $val = $this->parseValueByFieldType($val, $ft[$table . '_' . $key]);
                         }

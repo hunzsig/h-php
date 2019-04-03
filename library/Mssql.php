@@ -185,7 +185,7 @@ class Mssql extends DataBase
     {
         if (!$this->pdo) {
             try {
-                $this->pdo = new PDO($this->dsn(), $this->settings["user"], $this->settings["password"],array(
+                $this->pdo = new PDO($this->dsn(), $this->settings["user"], $this->settings["password"], array(
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 ));
             } catch (PDOException $e) {
@@ -359,7 +359,7 @@ class Mssql extends DataBase
                 if (is_array($v)) {
                     $result[$k] = $this->fetchFormat($v);
                 } elseif (isset($ft[$k])) {
-                    switch ($ft[$k]){
+                    switch ($ft[$k]) {
                         case 'json':
                             $result[$k] = json_decode($v, true);
                             if ($this->isCrypto()) {
@@ -900,6 +900,7 @@ class Mssql extends DataBase
                         $innerSql .= $this->parseKey($table) . '.';
                         $innerSql .= $field;
                     }
+                    $isContinue = false;
                     switch ($v['operat']) {
                         case self::equalTo:
                             $value = $this->parseWhereByFieldType($v['value'], $ft_type);
@@ -998,8 +999,10 @@ class Mssql extends DataBase
                             $innerSql .= " not in ({$value})";
                             break;
                         default:
-                            continue;
+                            $isContinue = true;
+                            break;
                     }
+                    if ($isContinue) continue;
                     $sql .= $sql ? " {$cond}{$innerSql} " : $innerSql;
                 }
             }
@@ -2072,8 +2075,8 @@ class Mssql extends DataBase
         $options['order'] = null;
         $options['limit'] = 1;
         $options['offset'] = 0;
-        if(!empty($options['group'])){
-            $options['field'] = 'count(DISTINCT '.$options['group'].') as "hcount"';
+        if (!empty($options['group'])) {
+            $options['field'] = 'count(DISTINCT ' . $options['group'] . ') as "hcount"';
             $options['group'] = null;
         } else {
             $options['field'] = 'count(0) as "hcount"';

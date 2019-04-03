@@ -1,4 +1,6 @@
 ##更新日志 <a href="https://github.com/hunzsig/h-php" target="_blank">GitHub</a>
+###2019/04/03
+    修复了db核心的break warning
 ###2019/03/30
     优化了打包，增加了-c参数指定config路径
     现在打包的dist目录会生成在config中设定的path_root处

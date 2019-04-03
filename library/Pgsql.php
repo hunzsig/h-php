@@ -902,6 +902,7 @@ class Pgsql extends DataBase
                         $innerSql .= $this->parseKey($table) . '.';
                         $innerSql .= $field;
                     }
+                    $isContinue = false;
                     switch ($v['operat']) {
                         case self::equalTo:
                             $value = $this->parseWhereByFieldType($v['value'], $ft_type);
@@ -1028,8 +1029,10 @@ class Pgsql extends DataBase
                             $innerSql .= " <@ {$value}";
                             break;
                         default:
-                            continue;
+                            $isContinue = true;
+                            break;
                     }
+                    if ($isContinue) continue;
                     $sql .= $sql ? " {$cond}{$innerSql} " : $innerSql;
                 }
             }
