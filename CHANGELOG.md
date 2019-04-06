@@ -1,4 +1,9 @@
-##更新日志 <a href="https://github.com/hunzsig/h-php" target="_blank">GitHub</a>
+## 更新日志 <a href="https://gitlab.com/h-web/h-php" target="_blank">Gitlab</a>
+### 2019/04/03
+    修复了DB核心的break产生的warning
+### 2019/03/30
+    优化打包，增加 -c 参数指定config的路径
+    现在打包会在ROOT路径下
 ### 2019/03/23
     补回了config自定义的方式
     你可以在根目录构建一个config.php
