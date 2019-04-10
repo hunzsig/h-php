@@ -122,7 +122,10 @@ class Model extends Table
         if (strpos($response, 'duplicate key') !== false) {
             $response = 'duplicate key';
         }
-        $response = $this->db()->responseTranslate($this->getBean()->getLanguage(), $response);
+        $db = $this->db();
+        if (method_exists($db, 'responseTranslate')) {
+            $response = $this->db()->responseTranslate($this->getBean()->getLanguage(), $response);
+        }
         return $response;
     }
 
