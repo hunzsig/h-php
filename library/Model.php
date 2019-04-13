@@ -6,7 +6,7 @@ class Model extends Table
 {
 
     private $_now;
-    private $_micronow;
+    private $_micro_now;
     private $_io;
     private $_header;
     private $_server;
@@ -39,7 +39,7 @@ class Model extends Table
         parent::__construct();
         if ($io) {
             $this->_now = time();
-            $this->_micronow = microtime();
+            $this->_micro_now = microtime();
             $this->_io = $io;
             $this->_header = $io['header'];
             $this->_server = $io['server'];
@@ -419,7 +419,7 @@ class Model extends Table
      */
     protected function getMicroNow()
     {
-        return $this->_micronow;
+        return $this->_micro_now;
     }
 
 
