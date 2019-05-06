@@ -1,5 +1,5 @@
 ## 如何开始
-### 你可以通过git下载：`git clone git@gitlab.com:h-web/h-php.git`
+### 你可以通过git下载：`git clone git@github.com:hunzsig/h-assets.git`
 ### 也可以通过composer：`composer install`
 ## 
 ### 建造一个index.php
